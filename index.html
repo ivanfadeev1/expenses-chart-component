@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon-32x32.png">
+  <title>Expenses chart</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main class="main">
+    <div class="chart">
+      <div class="chart__container">
+        <div class="chart__balance">
+          <p class="chart__balance-content">
+            <span class="chart__balance-content-subtitle">My balance</span>
+            <span class="chart__balance-content-count">
+              $<span class="counter" data-value="921.48">0</span>
+            </span>
+          </p>
+          <div class="chart__balance-logo">
+            <div class="chart__balance-logo-shape"></div>
+          </div>
+        </div>
+        <div class="chart__spending">
+          <p class="chart__spending-title">Spending - Last 7 days</p>
+          <ul class="chart__spending-list">
+            <li class="chart__spending-list-item">
+              <div class="chart__spending-list-item-bar"></div>
+              <span class="chart__spending-list-item-subtitle">mon</span>
+            </li>
+            <li class="chart__spending-list-item">
+              <div class="chart__spending-list-item-bar"></div>
+              <span class="chart__spending-list-item-subtitle">tue</span>
+            </li>
+            <li class="chart__spending-list-item">
+              <div class="chart__spending-list-item-bar"></div>
+              <span class="chart__spending-list-item-subtitle">wed</span>
+            </li>
+            <li class="chart__spending-list-item">
+              <div class="chart__spending-list-item-bar"></div>
+              <span class="chart__spending-list-item-subtitle">thu</span>
+            </li>
+            <li class="chart__spending-list-item">
+              <div class="chart__spending-list-item-bar"></div>
+              <span class="chart__spending-list-item-subtitle">fri</span>
+            </li>
+            <li class="chart__spending-list-item">
+              <div class="chart__spending-list-item-bar"></div>
+              <span class="chart__spending-list-item-subtitle">sat</span>
+            </li>
+            <li class="chart__spending-list-item">
+              <div class="chart__spending-list-item-bar"></div>
+              <span class="chart__spending-list-item-subtitle">sun</span>
+            </li>
+          </ul>
+          <div class="chart__spending-total">
+            <p class="chart__spending-total-this-month">
+              <span class="chart__spending-total-this-month-subtitle">Total this month</span>
+              <span class="chart__spending-total-this-month-count">
+                $<span class="counter" data-value="478.33">0</span>
+              </span>
+            </p>
+            <p class="chart__spending-total-last-month">
+              <span class="chart__spending-total-last-month-count">+2.4%</span>
+              <span class="chart__spending-total-last-month-subtitle">from last month</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,296 @@
+@keyframes chart {
+  0% {
+    transform: scale(1.02);
+    opacity: 0.5;
+  }
+  25% {
+    transform: scale(1.05);
+  }
+  50% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  75% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes counter {
+  0% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes plus {
+  0%,
+    65% {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+@keyframes logo {
+  0%,
+    33% {
+    transform: translateX(0px);
+  }
+}
+body {
+  font-family: "DM Sans", sans-serif;
+  background-color: #F8E9DD;
+}
+
+.chart {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.chart__container {
+  width: 572px;
+  padding: 0 16px;
+  animation: chart 1.2s ease-in-out;
+}
+.chart__balance {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 27px 39px 25px 32px;
+  background-color: #EC755D;
+  border-radius: 20px;
+  margin-bottom: 24px;
+}
+.chart__balance-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px 0;
+  color: #FFFBF6;
+}
+.chart__balance-content-subtitle {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 23px;
+}
+.chart__balance-content-count {
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 42px;
+  animation: counter 1.2s ease-in-out;
+}
+.chart__balance-logo-shape {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: #382314;
+}
+.chart__balance-logo-shape::before {
+  position: absolute;
+  content: '';
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 2px solid #FFFBF6;
+  transform: translateX(-24px);
+  animation: logo .7s ease-in-out;
+  animation-fill-mode: forwards;
+}
+.chart__spending {
+  padding: 40px;
+  padding-top: 32px;
+  background-color: #FFFBF6;
+  border-radius: 20px;
+}
+.chart__spending-title {
+  color: #382314;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 42px;
+  margin-bottom: 66px;
+}
+.chart__spending-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 0 18px;
+  padding-bottom: 32px;
+  border-bottom: 2px solid #F8E9DD;
+  margin-bottom: 32px;
+}
+.chart__spending-list-item {
+  position: relative;
+  flex: 1 1 0;
+}
+.chart__spending-list-item-bar {
+  background-color: #EC755D;
+  border-radius: 5px;
+  margin-bottom: 8px;
+  transition: background-color 0.2s ease-in;
+}
+.chart__spending-list-item-bar--today {
+  background-color: #76B5BC;
+}
+.chart__spending-list-item-subtitle {
+  display: block;
+  color: #92857A;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 20px;
+  text-align: center;
+}
+.chart__spending-list-item::before {
+  position: absolute;
+  content: '$52.36';
+  color: #FFFBF6;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 23px;
+  background-color: #382314;
+  padding: 8px;
+  padding-bottom: 9px;
+  border-radius: 5px;
+  top: -48px;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.2s ease-in;
+}
+.chart__spending-list-item:hover .chart__spending-list-item-bar {
+  background-color: #FF9B86;
+}
+.chart__spending-list-item:hover .chart__spending-list-item-bar--today {
+  background-color: #B4E0E5;
+}
+.chart__spending-list-item:hover::before {
+  opacity: 1;
+}
+.chart__spending-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.chart__spending-total-this-month {
+  display: flex;
+  flex-direction: column;
+  gap: 1px 0;
+}
+.chart__spending-total-this-month-subtitle {
+  color: #92857A;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 23px;
+}
+.chart__spending-total-this-month-count {
+  color: #382314;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 62px;
+  animation: counter 1.2s ease-in-out;
+}
+.chart__spending-total-last-month {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1px 0;
+}
+.chart__spending-total-last-month-count {
+  color: #382314;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 23px;
+  animation: plus 1.4s ease-in;
+}
+.chart__spending-total-last-month-subtitle {
+  color: #92857A;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 23px;
+}
+@media (max-width: 480px) {
+  .chart {
+    padding: 67px 0;
+  }
+  .chart__balance {
+    padding: 20px 24px 22px 20px;
+    border-radius: 10px;
+    margin-bottom: 16px;
+  }
+  .chart__balance-content {
+    gap: 4px 0;
+  }
+  .chart__balance-content-subtitle {
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 20px;
+  }
+  .chart__balance-content-count {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 31px;
+  }
+  .chart__balance-logo-shape {
+    width: 40px;
+    height: 40px;
+  }
+  .chart__balance-logo-shape::before {
+    transform: translateX(-20px);
+  }
+  .chart__spending {
+    padding: 24px 20px;
+    border-radius: 10px;
+  }
+  .chart__spending-title {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 31px;
+    margin-bottom: 52px;
+  }
+  .chart__spending-list {
+    gap: 0 12px;
+    padding-bottom: 24px;
+    margin-bottom: 24px;
+  }
+  .chart__spending-list-item-bar {
+    border-radius: 3px;
+    margin-bottom: 11px;
+  }
+  .chart__spending-list-item-subtitle {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+  }
+  .chart__spending-total-this-month {
+    gap: 4px 0;
+  }
+  .chart__spending-total-this-month-subtitle {
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 20px;
+  }
+  .chart__spending-total-this-month-count {
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 39px;
+  }
+  .chart__spending-total-last-month {
+    gap: 0;
+  }
+  .chart__spending-total-last-month-count {
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 20px;
+  }
+  .chart__spending-total-last-month-subtitle {
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 20px;
+  }
+}

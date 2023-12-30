@@ -1,0 +1,299 @@
+// Variables
+$font-family: 'DM Sans', sans-serif;
+$color-white: #FFFBF6;
+$color-cream: #F8E9DD;
+$color-red: #EC755D;
+$color-cyan: #76B5BC;
+$color-brown: #92857A;
+$color-dark-brown: #382314;
+$hover: .2s ease-in;
+
+// Mixins
+@mixin font($fw, $fz, $lh) {
+    font-weight: $fw;
+    font-size: #{$fz}px;
+    line-height: #{$lh}px;
+}
+
+@mixin font-subtitle {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 23px;
+}
+
+@mixin font-subtitle-mobile {
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 20px;
+}
+
+// Animation
+@keyframes chart {
+    0% {
+        transform: scale(1.02);
+        opacity: 0.5;
+    }
+    25% {
+        transform: scale(1.05);
+    }
+    50% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    75% {
+        transform: scale(1.02);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes counter {
+    0% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes plus {
+    0%,
+    65% {
+        transform: translateY(-30px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+
+@keyframes logo {
+    0%,
+    33% {
+        transform: translateX(0px);
+    }
+    100% {}
+}
+
+// General
+body {
+    font-family: $font-family;
+    background-color: $color-cream;
+}
+
+// Chart
+.chart {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &__container {
+        width: 572px;
+        padding: 0 16px;
+        animation: chart 1.2s ease-in-out;
+    }
+    &__balance {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 27px 39px 25px 32px;
+        background-color: $color-red;
+        border-radius: 20px;
+        margin-bottom: 24px;
+        &-content {
+            display: flex;
+            flex-direction: column;
+            gap: 8px 0;
+            color: $color-white;
+            &-subtitle {
+                @include font-subtitle;
+            }
+            &-count {
+                @include font(700, 32, 42);
+                animation: counter 1.2s ease-in-out;
+            }
+        }
+        &-logo-shape {
+            position: relative;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background-color: $color-dark-brown;
+            &::before {
+                position: absolute;
+                content: '';
+                width: 100%;
+                height: 100%;
+                border-radius: 50%;
+                border: 2px solid $color-white;
+                transform: translateX(-24px);
+                animation: logo .7s ease-in-out;
+                animation-fill-mode: forwards;
+            }
+        }
+    }
+    &__spending {
+        padding: 40px;
+        padding-top: 32px;
+        background-color: $color-white;
+        border-radius: 20px;
+        &-title {
+            color: $color-dark-brown;
+            @include font(700, 32, 42);
+            margin-bottom: 66px;
+        }
+        &-list {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: 0 18px;
+            padding-bottom: 32px;
+            border-bottom: 2px solid $color-cream;
+            margin-bottom: 32px;
+            &-item {
+                position: relative;
+                flex: 1 1 0;
+                &-bar {
+                    background-color: $color-red;
+                    border-radius: 5px;
+                    margin-bottom: 8px;
+                    transition: background-color $hover;
+                    &--today {
+                        background-color: $color-cyan;
+                    }
+                }
+                &-subtitle {
+                    display: block;
+                    color: $color-brown;
+                    @include font(400, 15, 20);
+                    text-align: center;
+                }
+                &::before {
+                    position: absolute;
+                    content: '$52.36';
+                    color: $color-white;
+                    @include font(700, 18, 23);
+                    background-color: $color-dark-brown;
+                    padding: 8px;
+                    padding-bottom: 9px;
+                    border-radius: 5px;
+                    top: -48px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    opacity: 0;
+                    transition: opacity $hover;
+                }
+                &:hover {
+                    .chart__spending-list-item-bar {
+                        background-color: #FF9B86;
+                        &--today {
+                            background-color: #B4E0E5;
+                        }
+                    }
+                    &::before {
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+        &-total {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            &-this-month {
+                display: flex;
+                flex-direction: column;
+                gap: 1px 0;
+                &-subtitle {
+                    color: $color-brown;
+                    @include font-subtitle;
+                }
+                &-count {
+                    color: $color-dark-brown;
+                    @include font(700, 48, 62);
+                    animation: counter 1.2s ease-in-out;
+                }
+            }
+            &-last-month {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-end;
+                gap: 1px 0;
+                &-count {
+                    color: $color-dark-brown;
+                    @include font(700, 18, 23);
+                    animation: plus 1.4s ease-in;
+                }
+                &-subtitle {
+                    color: $color-brown;
+                    @include font-subtitle;
+                }
+            }
+        }
+    }
+    @media (max-width: 480px) {
+        padding: 67px 0;
+        &__balance {
+            padding: 20px 24px 22px 20px;
+            border-radius: 10px;
+            margin-bottom: 16px;
+            &-content {
+                gap: 4px 0;
+                &-subtitle {
+                    @include font-subtitle-mobile;
+                }
+                &-count {
+                    @include font(700, 24, 31);
+                }
+            }
+            &-logo-shape {
+                width: 40px;
+                height: 40px;
+                &::before {
+                    transform: translateX(-20px);
+                }
+            }
+        }
+        &__spending {
+            padding: 24px 20px;
+            border-radius: 10px;
+            &-title {
+                @include font(700, 24, 31);
+                margin-bottom: 52px;
+            }
+            &-list {
+                gap: 0 12px;
+                padding-bottom: 24px;
+                margin-bottom: 24px;
+                &-item-bar {
+                    border-radius: 3px;
+                    margin-bottom: 11px;
+                }
+                &-item-subtitle {
+                    @include font(400, 12, 16);
+                }
+            }
+            &-total-this-month {
+                gap: 4px 0;
+                &-subtitle {
+                    @include font-subtitle-mobile;
+                }
+                &-count {
+                    @include font(700, 30, 39);
+                }
+            }
+            &-total-last-month {
+                gap: 0;
+                &-count {
+                    @include font(700, 15, 20);
+                }
+                &-subtitle {
+                    @include font-subtitle-mobile;
+                }
+            }
+        }
+    }
+}
