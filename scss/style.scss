@@ -1,5 +1,6 @@
 // Variables
 $font-family: 'DM Sans', sans-serif;
+$title-letter-spacing: 0.014em;
 $color-white: #FFFBF6;
 $color-cream: #F8E9DD;
 $color-red: #EC755D;
@@ -222,6 +223,7 @@ body {
                 flex-direction: column;
                 align-items: flex-end;
                 gap: 1px 0;
+                padding-bottom: 8px;
                 &-count {
                     color: $color-dark-brown;
                     @include font(700, 18, 23);
@@ -232,6 +234,13 @@ body {
                     @include font-subtitle;
                 }
             }
+        }
+    }
+    @media (min-width: 481px) {
+        &__balance-content-count,
+        &__spending-title,
+        &__spending-total-this-month-count {
+            letter-spacing: $title-letter-spacing;
         }
     }
     @media (max-width: 480px) {
@@ -287,6 +296,7 @@ body {
             }
             &-total-last-month {
                 gap: 0;
+                padding-bottom: 0;
                 &-count {
                     @include font(700, 15, 20);
                 }
