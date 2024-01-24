@@ -163,13 +163,13 @@ body {
   opacity: 0;
   transition: opacity 0.2s ease-in;
 }
-.chart__spending-list-item:hover .chart__spending-list-item-bar {
+.chart__spending-list-item:focus .chart__spending-list-item-bar, .chart__spending-list-item:hover .chart__spending-list-item-bar {
   background-color: #FF9B86;
 }
-.chart__spending-list-item:hover .chart__spending-list-item-bar--today {
+.chart__spending-list-item:focus .chart__spending-list-item-bar--today, .chart__spending-list-item:hover .chart__spending-list-item-bar--today {
   background-color: #B4E0E5;
 }
-.chart__spending-list-item:hover::before {
+.chart__spending-list-item:focus::before, .chart__spending-list-item:hover::before {
   opacity: 1;
 }
 .chart__spending-total {

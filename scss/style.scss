@@ -187,6 +187,7 @@ body {
                     opacity: 0;
                     transition: opacity $hover;
                 }
+                &:focus,
                 &:hover {
                     .chart__spending-list-item-bar {
                         background-color: #FF9B86;
